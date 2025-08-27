@@ -1,0 +1,17 @@
+numpy<2
+g4f
+faiss-cpu
+rank-bm25
+sentence-transformers
+fastapi
+uvicorn
+razdel
+natasha
+tqdm
+torch==2.1.2+cpu
+--extra-index-url https://download.pytorch.org/whl/cpu
+aiogram==3.10.0
+aiohttp
+asyncio
+soundfile
+requests

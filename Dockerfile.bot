@@ -1,0 +1,15 @@
+FROM python:3.10-slim
+
+WORKDIR /app
+
+COPY requirements.txt .
+RUN pip install --no-cache-dir -r requirements.txt
+RUN pip install aiogram==3.4.1 requests
+
+COPY bot/ ./bot/
+COPY api/chat.py ./api/chat.py
+COPY api/search.py ./api/search.py
+COPY api/indexer.py ./api/indexer.py
+COPY data/ ./data/
+
+CMD ["python", "bot/bot.py"]

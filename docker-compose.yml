@@ -1,0 +1,27 @@
+services:
+  api:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    container_name: witcher_api
+    ports:
+      - "8000:8000"
+    networks:
+      - witcher_net
+
+  bot:
+    build:
+      context: .
+      dockerfile: Dockerfile.bot
+    container_name: witcher_bot
+    depends_on:
+      - api
+    environment:
+      - API_TOKEN=<ваш_тг_токен>
+      - FASTAPI_URL=http://api:8000/ask
+    networks:
+      - witcher_net
+
+networks:
+  witcher_net:
+    driver: bridge
